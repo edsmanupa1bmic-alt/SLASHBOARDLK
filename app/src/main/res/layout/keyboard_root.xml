@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/keyboard_root_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#1E1E2C"
+    android:clipChildren="true"
+    android:clipToPadding="true">
+
+    <!-- Layer 0: Root Container Background with Wallpaper & Dim View -->
+    <ImageView
+        android:id="@+id/keyboard_bg_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="false"
+        android:visibility="gone"
+        android:contentDescription="@null" />
+
+    <View
+        android:background="#000000" android:id="@+id/keyboard_bg_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <include layout="@layout/voice_overlay_view" />
+
+    <!-- Main Vertical Layout for Rows 0 to 6 -->
+    <LinearLayout
+        android:id="@+id/main_keyboard_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="6dp">
+
+        <!-- ROW 0: Dual-Layer Smartbar (42dp Height) -->
+        <FrameLayout
+            android:id="@+id/smartbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginBottom="2dp">
+
+            <!-- LAYER A: IDLE SMARTBAR (7 Action Icons Toolbar) -->
+            <LinearLayout
+                android:id="@+id/smartbar_idle_layer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="visible"
+                android:alpha="1.0">
+
+                <!-- 7 Quick Action Circular Chips -->
+                <LinearLayout
+                    android:id="@+id/smartbar_action_icons_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="4dp">
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- LAYER B: TYPING SUGGESTIONS -->
+            <HorizontalScrollView
+                android:id="@+id/smartbar_suggestion_layer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:alpha="0.0"
+                android:scrollbars="none"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/suggestion_chips_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="4dp" />
+            </HorizontalScrollView>
+        </FrameLayout>
+
+        <!-- ROW 1.5: Dedicated Frequent Emoji Bar (Directly Above Number Row) -->
+        <HorizontalScrollView
+            android:id="@+id/frequent_emoji_bar"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:scrollbars="none"
+            android:fillViewport="true"
+            android:layout_marginBottom="3dp"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/frequent_emoji_container"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp" />
+        </HorizontalScrollView>
+
+        <!-- ROW 2: Dedicated Number Row (42dp Height) -->
+        <LinearLayout
+            android:id="@+id/number_row"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="3dp">
+
+            <TextView android:id="@+id/key_num_1" style="@style/KeyboardNumberKey" android:text="1" />
+            <TextView android:id="@+id/key_num_2" style="@style/KeyboardNumberKey" android:text="2" />
+            <TextView android:id="@+id/key_num_3" style="@style/KeyboardNumberKey" android:text="3" />
+            <TextView android:id="@+id/key_num_4" style="@style/KeyboardNumberKey" android:text="4" />
+            <TextView android:id="@+id/key_num_5" style="@style/KeyboardNumberKey" android:text="5" />
+            <TextView android:id="@+id/key_num_6" style="@style/KeyboardNumberKey" android:text="6" />
+            <TextView android:id="@+id/key_num_7" style="@style/KeyboardNumberKey" android:text="7" />
+            <TextView android:id="@+id/key_num_8" style="@style/KeyboardNumberKey" android:text="8" />
+            <TextView android:id="@+id/key_num_9" style="@style/KeyboardNumberKey" android:text="9" />
+            <TextView android:id="@+id/key_num_0" style="@style/KeyboardNumberKey" android:text="0" />
+        </LinearLayout>
+
+        <!-- ROW 3: QWERTY Row (46dp Height) -->
+        <LinearLayout
+            android:id="@+id/row_qwerty_top"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="4dp">
+
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_q" style="@style/KeyboardCharKey" android:text="q"/><TextView style="@style/KeyboardSubKey" android:text="1"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_w" style="@style/KeyboardCharKey" android:text="w"/><TextView style="@style/KeyboardSubKey" android:text="2"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_e" style="@style/KeyboardCharKey" android:text="e"/><TextView style="@style/KeyboardSubKey" android:text="3"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_r" style="@style/KeyboardCharKey" android:text="r"/><TextView style="@style/KeyboardSubKey" android:text="4"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_t" style="@style/KeyboardCharKey" android:text="t"/><TextView style="@style/KeyboardSubKey" android:text="5"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_y" style="@style/KeyboardCharKey" android:text="y"/><TextView style="@style/KeyboardSubKey" android:text="6"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_u" style="@style/KeyboardCharKey" android:text="u"/><TextView style="@style/KeyboardSubKey" android:text="7"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_i" style="@style/KeyboardCharKey" android:text="i"/><TextView style="@style/KeyboardSubKey" android:text="8"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_o" style="@style/KeyboardCharKey" android:text="o"/><TextView style="@style/KeyboardSubKey" android:text="9"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_p" style="@style/KeyboardCharKey" android:text="p"/><TextView style="@style/KeyboardSubKey" android:text="0"/></FrameLayout>
+        </LinearLayout>
+
+        <!-- ROW 4: Home Row (46dp Height) -->
+        <LinearLayout
+            android:id="@+id/row_qwerty_home"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="4dp">
+
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_a" style="@style/KeyboardCharKey" android:text="a"/><TextView style="@style/KeyboardSubKey" android:text="@string/sub_at"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_s" style="@style/KeyboardCharKey" android:text="s"/><TextView style="@style/KeyboardSubKey" android:text="#"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_d" style="@style/KeyboardCharKey" android:text="d"/><TextView style="@style/KeyboardSubKey" android:text="$"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_f" style="@style/KeyboardCharKey" android:text="f"/><TextView style="@style/KeyboardSubKey" android:text="%"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_g" style="@style/KeyboardCharKey" android:text="g"/><TextView style="@style/KeyboardSubKey" android:text="&amp;"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_h" style="@style/KeyboardCharKey" android:text="h"/><TextView style="@style/KeyboardSubKey" android:text="-"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_j" style="@style/KeyboardCharKey" android:text="j"/><TextView style="@style/KeyboardSubKey" android:text="+"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_k" style="@style/KeyboardCharKey" android:text="k"/><TextView style="@style/KeyboardSubKey" android:text="("/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_l" style="@style/KeyboardCharKey" android:text="l"/><TextView style="@style/KeyboardSubKey" android:text=")"/></FrameLayout>
+        </LinearLayout>
+
+        <!-- ROW 5: Bottom Character Row (Shift, z-m, Backspace) (46dp Height) -->
+        <LinearLayout
+            android:id="@+id/row_qwerty_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="4dp">
+
+            <ImageView
+                android:id="@+id/key_shift"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/bg_key_special"
+                android:padding="11dp"
+                android:src="@drawable/ic_arrow_upward"
+                android:contentDescription="Shift" />
+
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_z" style="@style/KeyboardCharKey" android:text="z"/><TextView style="@style/KeyboardSubKey" android:text="*"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_x" style="@style/KeyboardCharKey" android:text="x"/><TextView style="@style/KeyboardSubKey" android:text="\"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_c" style="@style/KeyboardCharKey" android:text="c"/><TextView style="@style/KeyboardSubKey" android:text="'"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_v" style="@style/KeyboardCharKey" android:text="v"/><TextView style="@style/KeyboardSubKey" android:text=":"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_b" style="@style/KeyboardCharKey" android:text="b"/><TextView style="@style/KeyboardSubKey" android:text=";"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_n" style="@style/KeyboardCharKey" android:text="n"/><TextView style="@style/KeyboardSubKey" android:text="!"/></FrameLayout>
+            <FrameLayout style="@style/KeyboardCharKeyContainer"><TextView android:id="@+id/key_m" style="@style/KeyboardCharKey" android:text="m"/><TextView style="@style/KeyboardSubKey" android:text="?"/></FrameLayout>
+
+            <ImageView
+                android:id="@+id/key_backspace"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/bg_key_special"
+                android:padding="11dp"
+                android:src="@drawable/ic_backspace"
+                android:contentDescription="Backspace" />
+        </LinearLayout>
+
+        <!-- ROW 6: Action Row ([123] [Globe] [,] [Spacebar - Red Pill] [.] [Enter - Blue Pill]) (46dp Height) -->
+        <LinearLayout
+            android:id="@+id/row_actions"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/key_sym_toggle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/bg_key_special"
+                android:gravity="center"
+                android:text="@string/key_sym_label"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/key_globe"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/bg_key_special"
+                android:gravity="center"
+                android:text="Si"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:contentDescription="Switch Language" />
+
+            <TextView
+                android:id="@+id/key_comma"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/bg_key_normal"
+                android:gravity="center"
+                android:text=","
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <!-- Red Pill Spacebar -->
+            <FrameLayout
+                android:id="@+id/key_spacebar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4.8"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/bg_pill_spacebar">
+
+                <TextView
+                    android:id="@+id/spacebar_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Skeyboard"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/key_period"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/bg_key_normal"
+                android:gravity="center"
+                android:text="."
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/key_enter"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.6"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/bg_pill_enter"
+                android:padding="10dp"
+                android:src="@drawable/ic_keyboard_return"
+                android:contentDescription="Enter" />
+        </LinearLayout>
+
+        <!-- Bottom Space insets view for adjustable bottom padding -->
+        <View
+            android:id="@+id/ime_bottom_space_insets"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</FrameLayout>

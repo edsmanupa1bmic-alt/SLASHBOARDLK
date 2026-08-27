@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Slashboard By laka</string>
+    <string name="english_ime_name">Slashboard Keyboard By laka</string>
+    <string name="ime_service_name">Slashboard IME By laka</string>
+    <string name="spell_checker_service_name">Slashboard Spell Checker</string>
+    <string name="ime_settings">Slashboard Settings</string>
+    <string name="clipboard_provider_authority">com.slashboard.keyboard.clipprovider</string>
+    <string name="gesture_data_provider_authority">com.slashboard.keyboard.gesturedata</string>
+    <string name="sub_at">@</string>
+    <string name="key_sym_label">\?123</string>
+</resources>

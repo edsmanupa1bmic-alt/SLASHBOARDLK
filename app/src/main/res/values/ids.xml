@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btn_lang_toggle" type="id" />
+    <item name="btn_utility_mic" type="id" />
+    <item name="btn_utility_settings" type="id" />
+    <item name="btn_utility_clipboard" type="id" />
+    <item name="btn_utility_collapse" type="id" />
+</resources>

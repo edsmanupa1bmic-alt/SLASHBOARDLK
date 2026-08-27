@@ -1,0 +1,6 @@
+{
+  "name": "Slashboard By laka",
+  "description": "Privacy-conscious customizable keyboard application by laka with English and Wijesekara Sinhala layout, emoji, clipboard, and theme support",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

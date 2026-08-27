@@ -1,11 +1,6 @@
-<div align="center">
+# Slashboard
+Slashboard is a privacy-conscious and customizable open-source keyboard, based on AOSP / OpenBoard.
+Does not use internet permission, and thus is 100% offline.
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 
-  <h1>Built with AI Studio</h2>
-
-  <p>The fastest path from prompt to production with Gemini.</p>
-
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+Further the project benefits from donations provided by many users (thank you all!).
